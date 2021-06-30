@@ -1,0 +1,184 @@
+<div class="cdp-cookies-admin">
+	<h1>Configuración de Asesor de Cookies</h1>
+
+<div class="cdp-cookies-instrucciones">
+
+	<p>Este plugin le va a ayudar a crear la política de cookies para su sitio web. El funcionamiento consiste en mostrar un mensaje cada vez que un nuevo usuario visita su web avisándole que si sigue navegando está <b>aceptando</b> la recepción de cookies y la <b>política de cookies</b> de su web.</p>
+
+	<p>Para configurar este plugin tiene que asignar los valores de estilo y formato para el <b>mensaje mostrado al usuario</b> que aparecen en este formulario y debe pulsar el botón <b>Crear páginas automáticamente</b> que le creará una página de <b>Política de Cookies</b> y otra de <b>Descripción de  cookies</b>, fundamentales para cumplir con la normativa.</p>
+
+	<p>Una vez creadas las páginas, debe editar la de <b>Política de cookies</b> y debe cambiar o completar los siguientes puntos:
+	<ol>
+		<li><cite>Este sitio web utiliza las siguientes cookies propias</cite>. Aquí debe añadir todas aquellas cookies que se estén generando desde su web, las denominadas <b>cookies propias</b>.</li>
+		<li><cite>Este sitio web utiliza las siguientes cookies de terceros</cite>. Aquí debe añadir todas aquellas cookies que se estén generando por servicios externos a su web, como Google Analytics, Facebook, Twitter, etc.</li>
+		<li>Si lo desea, donde dice <cite>Ni esta web ni sus representantes legales ...</cite> puede sustituirlo por el nombre de su empresa.</li>
+	</ol> 
+	</p>
+
+</div>
+
+	<form>
+
+		<!-- Modo discreto -->
+		<div class="cdp-cookies-grid">
+			<div class="cdp-cookies-4c">
+				<label class="padv10"><span style="color:#f00">¡NUEVO!</span> Posición <b>solapa</b></label>
+			</div>
+			<div class="cdp-cookies-5c">
+				<?php
+				$opciones = array( 
+					'ocultar' => 'Ocultar',
+					'izq' => 'Izquierda',
+					'der' => 'Derecha'
+				);
+				echo cdp_cookies_html::select( "posicion_solapa", $opciones, true, cdp_cookies::parametro( 'posicion_solapa' ) );
+				?>
+			</div>
+		</div>
+
+		<!-- Texto del aviso -->
+		<div class="cdp-cookies-grid">
+			<div class="cdp-cookies-4c">
+				<label class="padv10"><b>Aviso</b> mostrado al visitante</label>
+			</div>
+			<div class="cdp-cookies-5c">
+				<textarea name="texto_aviso" id="texto_aviso" rows="6"><?php echo cdp_cookies::parametro( 'texto_aviso' );?></textarea>
+			</div>
+		</div>
+
+		<!-- Tamaño del texto -->
+		<div class="cdp-cookies-grid">
+			<div class="cdp-cookies-4c">
+				<label class="padv10">Tamaño del texto del aviso</label>
+			</div>
+			<div class="cdp-cookies-5c">
+				<input type="text" name="tam_fuente" id="tam_fuente" value="<?php echo cdp_cookies::parametro( 'tam_fuente' );?>">
+			</div>
+		</div>
+
+		<!-- Alineación -->
+		<div class="cdp-cookies-grid">
+			<div class="cdp-cookies-4c">
+				<label class="padv0"><b>Alineación</b> del texto del aviso de cookies:</label>
+			</div>
+			<div class="cdp-cookies-5c">
+				<?php
+				$opciones = array( 
+					'izq' => 'A la izquierda',
+					'cen' => 'Centrado'
+				);
+				echo cdp_cookies_html::select( "alineacion", $opciones, true, cdp_cookies::parametro( 'alineacion' ) );
+				?>
+			</div>
+		</div>
+
+		<!-- Estilo -->
+		<div class="cdp-cookies-grid">
+			<div class="cdp-cookies-4c">
+				<label>Estilo:</label>
+			</div>
+			<div class="cdp-cookies-5c cdp-cookies-colores">
+				<div class="cdp-cookies-radio cdp-cookies-color-gris">
+					<input id="tema" name="tema" type="radio" value="gris" <?php 
+					echo cdp_cookies::parametro( 'tema' ) == 'gris' ? 'checked' : '';?>>
+					Gris
+				</div>
+				<div class="cdp-cookies-radio cdp-cookies-color-blanco">
+					<input id="tema" name="tema" type="radio" value="blanco" <?php 
+					echo cdp_cookies::parametro( 'tema' ) == 'blanco' ? 'checked' : '';?>>
+					Blanco
+				</div>
+				<div class="cdp-cookies-radio cdp-cookies-color-azul">
+					<input id="tema" name="tema" type="radio" value="azul" <?php 
+					echo cdp_cookies::parametro( 'tema' ) == 'azul' ? 'checked' : '';?>>
+					Azul
+				</div>
+				<div class="cdp-cookies-radio cdp-cookies-color-rojo">
+					<input id="tema" name="tema" type="radio" value="rojo" <?php 
+					echo cdp_cookies::parametro( 'tema' ) == 'rojo' ? 'checked' : '';?>>
+					Rojo
+				</div>
+				<div class="cdp-cookies-radio cdp-cookies-color-verde">
+					<input id="tema" name="tema" type="radio" value="verde" <?php 
+					echo cdp_cookies::parametro( 'tema' ) == 'verde' ? 'checked' : '';?>>
+					Verde
+				</div>
+			</div>
+		</div>
+
+		<!-- separador -->
+		<div class="cdp-cookies-grid">
+			<div class="cdp-cookies-10c">
+				<hr>
+			</div>
+		</div>
+
+		<!-- URL Política -->
+		<div class="cdp-cookies-grid">
+			<div class="cdp-cookies-4c">
+				<label class="padv0">URL de la <b>página de política</b> de cookies:<br>
+				(puede ser un enlace a un <b>PDF</b>)</label>
+			</div>
+			<div class="cdp-cookies-5c">
+				<input type="text" name="enlace_politica" id="enlace_politica" value="<?php echo cdp_cookies::parametro( 'enlace_politica' );?>">
+			</div>
+			<div class="cdp-cookies-1c">
+				<a href="javascript:;" class="cdp-cookies-boton azul cdp-cookies-ver-politica" target="_blank">Ver</a>
+			</div>
+		</div>
+
+		<!-- URL +info -->
+		<div class="cdp-cookies-grid">
+			<div class="cdp-cookies-4c">
+				<label class="padv0">URL de la <b>página de más información</b> sobre las cookies:<br>
+				(puede ser un enlace a un <b>PDF</b>)</label>
+			</div>
+			<div class="cdp-cookies-5c">
+				<input type="text" name="enlace_mas_informacion" id="enlace_mas_informacion" value="<?php echo cdp_cookies::parametro( 'enlace_mas_informacion' );?>">
+			</div>
+			<div class="cdp-cookies-1c">
+				<a href="javascript:;" class="cdp-cookies-boton azul cdp-cookies-ver-mas-info" target="_blank">Ver</a>
+			</div>
+		</div>
+
+		<!-- Botón crear páginas -->
+		<div class="cdp-cookies-grid">
+			<div class="cdp-cookies-4c">
+				&nbsp;
+			</div>
+			<div class="cdp-cookies-5c">
+				<a href="javascript:;" class="cdp-cookies-boton azul cdp-cookies-crear-politica">Crear páginas automáticamente</a>
+			</div>
+		</div>
+
+		<!-- separador -->
+		<div class="cdp-cookies-grid">
+			<div class="cdp-cookies-10c">
+				<hr>
+			</div>
+		</div>
+
+		<!-- Guardar -->
+		<div class="cdp-cookies-grid">
+			<div class="cdp-cookies-4c">
+				&nbsp;
+			</div>
+			<div class="cdp-cookies-5c">
+				<a href="javascript:;" class="cdp-cookies-boton azul cdp-cookies-guardar">Guardar</a>
+			</div>
+		</div>
+
+		<!-- Mensajes de error y avisos -->
+		<div class="cdp-cookies-grid">
+			<div class="cdp-cookies-mensajes"></div>
+		</div>
+
+	</form>
+
+	<p>Este plugin pretende ahorrar tiempo y esfuerzo a su empresa para que pueda diseñar una correcta y adecuada política de cookies en su página web. El creador de este plugin no se hace responsable, ni tiene porqué intervenir en posibles litigios o acciones legales que puedan emprender contra su empresa por un posible incumplimiento de la citada ley de cookies. Es su obligación acudir a un abogado para que revise su política de cookies con el fin de conocer si cumple todos los requisitos solicitados por la Agencia Española de Protección de Datos.</p>
+
+	<p>
+		<a href="https://webartesanal.com" target="_blank">Plugin creado por Carlos Doral (webartesanal.com)</a>
+	</p>
+
+</div>

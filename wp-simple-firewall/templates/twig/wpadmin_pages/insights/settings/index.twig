@@ -1,0 +1,17 @@
+{% extends '/wpadmin_pages/insights/base.twig' %}
+
+{% block page_head_titlemenu %}
+	{{ parent() }}
+{% endblock page_head_titlemenu %}
+
+{% block page_main %}
+	<div class="row" id="ModulePageTopRow">
+		<div class="col" id="ColumnOptions">
+			<div class="content-options"> {{ strings.loading }} ... </div>
+		</div>
+	</div>
+	<script>
+		iCWP_WPSF_OptsPageRender.renderForm( {{ ajax.mod_opts_form_render|raw }} );
+		iCWP_WPSF_OptionsFormSubmit.updateAjaxReqParams( {{ ajax.mod_options|raw }} );
+	</script>
+{% endblock %}

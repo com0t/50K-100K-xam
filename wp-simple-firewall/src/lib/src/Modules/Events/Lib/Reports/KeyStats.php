@@ -1,0 +1,78 @@
+<?php
+
+namespace FernleafSystems\Wordpress\Plugin\Shield\Modules\Events\Lib\Reports;
+
+use FernleafSystems\Wordpress\Plugin\Shield\Databases\Events as DBEvents;
+use FernleafSystems\Wordpress\Plugin\Shield\Modules\Events;
+use FernleafSystems\Wordpress\Plugin\Shield\Modules\Reporting\Lib\Reports\BaseReporter;
+
+class KeyStats extends BaseReporter {
+
+	/**
+	 * @inheritDoc
+	 */
+	public function build() {
+		$alerts = [];
+
+		/** @var Events\ModCon $mod */
+		$mod = $this->getMod();
+		/** @var DBEvents\Select $selector */
+		$selector = $mod->getDbHandler_Events()->getQuerySelector();
+		/** @var Events\Strings $strings */
+		$strings = $mod->getStrings();
+
+		$eventKeys = [
+			'ip_offense',
+			'ip_blocked',
+			'conn_kill',
+			'firewall_block',
+			'bottrack_404',
+			'bottrack_fakewebcrawler',
+			'bottrack_linkcheese',
+			'bottrack_loginfailed',
+			'bottrack_logininvalid',
+			'bottrack_xmlrpc',
+			'bottrack_invalidscript',
+			'spam_block_bot',
+			'spam_block_recaptcha',
+			'spam_block_human',
+		];
+
+		$rep = $this->getReport();
+
+		$sums = [];
+		foreach ( $eventKeys as $event ) {
+			try {
+				$eventSum = $selector
+					->filterByBoundary( $rep->interval_start_at, $rep->interval_end_at )
+					->sumEvent( $event );
+				if ( $eventSum > 0 ) {
+					$sums[ $event ] = [
+						'count' => $eventSum,
+						'name'  => $strings->getEventName( $event ),
+					];
+				}
+			}
+			catch ( \Exception $e ) {
+			}
+		}
+
+		if ( count( $sums ) > 0 ) {
+			$alerts[] = $this->getMod()->renderTemplate(
+				'/components/reports/mod/events/info_keystats.twig',
+				[
+					'vars'    => [
+						'counts' => $sums
+					],
+					'strings' => [
+						'title' => __( 'Top Security Statistics', 'wp-simple-firewall' ),
+					],
+					'hrefs'   => [
+					],
+				]
+			);
+		}
+
+		return $alerts;
+	}
+}

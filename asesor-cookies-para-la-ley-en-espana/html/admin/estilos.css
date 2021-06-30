@@ -1,0 +1,273 @@
+/*============================================
+  General
+  ============================================*/
+.cdp-cookies-admin {
+	width: 100%;  
+	max-width: 960px;
+	margin: 0 auto;
+}
+.cdp-cookies-admin h1 {
+	font-size:22px;
+	line-height: 24px;
+	font-weight: normal;
+	color: #666666;
+}
+.cdp-cookies-admin .cdp-cookies-mensajes {
+	display: none;
+	background-color: #d2ffc9;
+	padding: 20px;
+	border: 1px solid #bbbbbb;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-khtml-border-radius: 5px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+} 
+.cdp-cookies-admin .cdp-cookies-mensajes.error {
+	background-color: #fffccb;
+	border:1px solid #e4db57;
+}
+
+/*============================================
+  varios
+  ============================================*/
+.cdp-align-der {
+	text-align: right;
+}
+
+/*============================================
+  Instrucciones
+  ============================================*/
+.cdp-cookies-instrucciones {
+	padding: 0 20px 0 0;
+}
+
+/*============================================
+  Publi
+  ============================================*/
+.cdp-cookies-publi {
+}
+.cdp-cookies-publi:after {
+	display: table;
+	content: "";
+	clear:both;
+}
+
+/*============================================
+  Grid
+  ============================================*/
+.cdp-cookies-grid {
+	padding: 10px 0;
+}
+.cdp-cookies-grid:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.cdp-cookies-1c,
+.cdp-cookies-2c,
+.cdp-cookies-3c,
+.cdp-cookies-4c,
+.cdp-cookies-5c,
+.cdp-cookies-6c,
+.cdp-cookies-7c,
+.cdp-cookies-8c,
+.cdp-cookies-9c,
+.cdp-cookies-10c {
+	float:left;
+	padding: 0 10px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.cdp-cookies-1c { width:  60px; }
+.cdp-cookies-2c { width: 120px; }
+.cdp-cookies-3c { width: 180px; }
+.cdp-cookies-4c { width: 240px; }
+.cdp-cookies-5c { width: 300px; }
+.cdp-cookies-6c { width: 360px; }
+.cdp-cookies-7c { width: 420px; }
+.cdp-cookies-8c { width: 480px; }
+.cdp-cookies-9c { width: 540px; }
+.cdp-cookies-10c { width: 600px; }
+.cdp-cookies-pad-v0 { padding-top: 0; padding-bottom: 0; }
+
+/*============================================
+  Forms
+  ============================================*/
+.cdp-cookies-admin form {
+	display: inline-block;
+	background-color: #efefef;
+	padding: 10px;
+	margin: 0;
+	border: 1px solid #cccccc;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-khtml-border-radius: 5px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.cdp-cookies-admin form label {
+	text-align: right;
+	display: inline-block;
+	width: 100%;
+	padding: 10px;
+	margin:0;
+	font-family: "Arial";
+	font-size:12px;
+	vertical-align: bottom;
+}
+.cdp-cookies-admin form label.padv0 {
+	padding-top: 0;
+	padding-bottom: 0;
+}
+.cdp-cookies-admin form input[type="text"] {
+	width: 100%;
+	display: block;
+	padding: 10px;
+	margin:0;
+	color: #666666;
+	background-color: #fff;
+	font-family: "Arial";
+	font-size:12px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-khtml-border-radius: 5px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.cdp-cookies-admin form textarea {
+	width: 100%;
+	display: block;
+	padding: 10px;
+	margin:0;
+	color: #666666;
+	background-color: #fff;
+	font-family: "Arial";
+	font-size:12px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-khtml-border-radius: 5px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.cdp-cookies-admin form .cdp-cookies-radio {
+	cursor: pointer;
+	width: 100%;
+	display: block;
+	padding: 10px;
+	margin:0 0 10px 0;
+	color: #666666;
+	background-color: #e5e5e5;
+	font-family: "Arial";
+	font-size:12px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-khtml-border-radius: 5px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;	
+}
+.cdp-cookies-admin form .cdp-cookies-radio input {
+	margin-right: 5px;
+}
+.cdp-cookies-admin form select {
+	width: 100%;
+	display: block;
+	padding: 10px;
+	margin:0;
+	color: #666666;
+	background-color: #fff;
+	font-family: "Arial";
+	font-size:12px;
+	height: 36px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-khtml-border-radius: 5px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.cdp-cookies-admin form hr {
+	padding: 0;
+	margin: 0;
+	height: 1px;
+	border: 0;
+	border-bottom: 1px solid #cccccc;
+}
+.cdp-cookies-admin a.cdp-cookies-boton.azul {
+	display: block;
+	width: 100%;
+	border: 1px solid #ffffff;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-khtml-border-radius: 5px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	text-decoration: none;
+	padding: 0 10px;
+	margin: 0;
+	color: #ffffff;
+	text-shadow: 1px 1px 1px #222222; 
+	font-family: "Arial";
+	font-size:14px;
+	line-height: 36px;
+	text-align: center;
+	outline: none;
+	background-image: -moz-linear-gradient(bottom, #4a7bd9, #60ade8); 
+	background-image: -ms-linear-gradient(bottom, #4a7bd9, #60ade8); 
+	background-image: -o-linear-gradient(bottom, #4a7bd9, #60ade8); 
+	background-image: -webkit-gradient(linear, left bottom, left top, from(#4a7bd9), to(#60ade8)); 
+	background-image: -webkit-linear-gradient(bottom, #4a7bd9, #60ade8); 
+	background-image: linear-gradient(bottom, #4a7bd9, #60ade8);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr="#4a7bd9", endColorStr="#60ade8"); 
+}
+.cdp-cookies-admin a.cdp-cookies-boton.azul:hover {
+    background-image: none;
+    filter:none;
+    background-color: #60ade8;
+}
+.cdp-cookies-colores {
+}
+.cdp-cookies-colores .cdp-cookies-radio.cdp-cookies-color-gris {
+	background-color: #444444;
+	color: #ffffff;
+	border:0;
+}
+.cdp-cookies-colores .cdp-cookies-radio.cdp-cookies-color-verde {
+	background-color: #0b7000;
+	color: #dddddd;
+	border:0;
+}
+.cdp-cookies-colores .cdp-cookies-radio.cdp-cookies-color-azul {
+	background-color: #5492e0;
+	color: #eeeeee;
+	border:0;
+}
+.cdp-cookies-colores .cdp-cookies-radio.cdp-cookies-color-blanco {
+	background-color: #ffffff;
+	color: #888888;
+	border:0;
+}
+.cdp-cookies-colores .cdp-cookies-radio.cdp-cookies-color-rojo {
+	background-color: #e04729;
+	color: #dddddd;
+	border:0;
+}
+

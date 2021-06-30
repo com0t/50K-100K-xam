@@ -1,0 +1,62 @@
+<?php
+
+namespace FernleafSystems\Wordpress\Plugin\Shield\Modules\LoginGuard;
+
+use FernleafSystems\Wordpress\Plugin\Shield\Modules\BaseShield;
+use FernleafSystems\Wordpress\Plugin\Shield\Utilities\Time\WorldTimeApi;
+
+class UI extends BaseShield\UI {
+
+	protected function getSectionWarnings( string $section ) :array {
+		$con = $this->getCon();
+		/** @var Options $opts */
+		$opts = $this->getOptions();
+
+		$warnings = [];
+
+		if ( $section == 'section_brute_force_login_protection' ) {
+
+			if ( empty( $opts->getBotProtectionLocations() ) ) {
+				$warnings[] = __( "AntiBot detection isn't being applied to your site because you haven't selected any forms to protect, such as Login or Register.", 'wp-simple-firewall' );
+			}
+
+			$installedButNotEnabledProviders = array_filter(
+				$con->getModule_Integrations()
+					->getController_UserForms()
+					->getInstalledProviders(),
+				function ( $provider ) {
+					return !$provider->isEnabled();
+				}
+			);
+			if ( !empty( $installedButNotEnabledProviders ) ) {
+				$warnings[] = sprintf( __( "%s has an integration available to protect the login forms of a 3rd party plugin you're using: %s", 'wp-simple-firewall' ),
+					$con->getHumanName(),
+					sprintf( '<a href="%s">%s</a>',
+						$con->getModule_Integrations()->getUrl_DirectLinkToSection( 'section_user_forms' ),
+						sprintf( __( "View the available integrations.", 'wp-simple-firewall' ), $con->getHumanName() )
+					)
+				);
+			}
+		}
+
+		if ( $section == 'section_2fa_ga' ) {
+			try {
+				$diff = ( new WorldTimeApi() )->diffServerWithReal();
+				if ( $diff > 10 ) {
+					$warnings[] = __( 'It appears that your server time configuration is out of sync - Please contact your server admin, as features like Google Authenticator wont work.', 'wp-simple-firewall' );
+				}
+			}
+			catch ( \Exception $e ) {
+			}
+		}
+
+		if ( $section == 'section_2fa_email' ) {
+			$warnings[] =
+				__( '2FA by email demands that your WP site is properly configured to send email.', 'wp-simple-firewall' )
+				.'<br/>'.__( 'This is a common problem and you may get locked out in the future if you ignore this.', 'wp-simple-firewall' )
+				.' '.sprintf( '<a href="%s" target="_blank" class="alert-link">%s</a>', 'https://shsec.io/dd', __( 'Learn More.', 'wp-simple-firewall' ) );
+		}
+
+		return $warnings;
+	}
+}
